@@ -5,7 +5,8 @@ define(function(require) {
 	var SlidesView = require('view/slides')
 	var SlideView = require('view/slide')
 	var Slide = require('model/slide')
-	var Decks = new DeckList()
+	var NewDeck = require('view/newdeck');
+	var Decks = new DeckList();
 	return Backbone.Router.extend({
 	    initialize: function() {
 	      Backbone.history.start();
@@ -13,8 +14,11 @@ define(function(require) {
 	    routes: {
 	      "": "decks",
 	      "decks/:deckId": "deck",
-	      "slides/:deckId/:num": "slide"
-	    },
+	      "slides/:deckId/:num": "slide",
+	      "newdeck": "addNewDeck",
+	      "decks" : "newDeckRequest",
+	       '*actions': 'defaultAction'
+	     },
 	    decks: function() {
 	    	var decks = new DecksView({collection: Decks});
 	    },
@@ -38,6 +42,21 @@ define(function(require) {
 	        var view = new SlideView({model: s});
 	        $('.content').html(view.render().el);
 	      }
+	    },
+	    addNewDeck: function(){
+	    	var newdeck = new NewDeck({collection: Decks});
+	    	
+	    	
+	    },
+	    newDeckRequest: function(newdeck){
+	    
+	    	alert("We have Received Deck and Author is:  ");
+	    
+	    },
+	    defaultAction: function(actions){
+	    
+	    	alert("These are the default actions:  ");
+	    
 	    }
 	});
 });

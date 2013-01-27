@@ -31,11 +31,11 @@ app.configure('development', function(){
 });
 
 app.get('/decks', routes.decks);
-app.post('/decks/add', routes.add_new_deck);
 app.get('/decks/:id', routes.deck);
 app.get('/decks/:id/:num', routes.slide);
 app.get('/prez', routes.prez);
 app.get('/prez/:id', routes.pres);
+app.post('/decks',routes.newdeck);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
