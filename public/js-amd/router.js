@@ -44,7 +44,7 @@ define(function(require) {
 	      }
 	    },
 	    addNewDeck: function(){
-	    	var newdeck = new NewDeck({collection: Decks});
+	    	var newdeck = new NewDeck({collection: Decks, router:this});
 	    	
 	    	
 	    },

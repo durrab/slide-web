@@ -1,11 +1,12 @@
 define(function(require) {
 	var Backbone = require('backbone');
 	var template = require('hbs!../../tmpl/newdeck');
-	var DeckView = require('view/deck')
+	var DeckView = require('view/deck');
 	var Deck = require('model/Deck')
 	var View =  Backbone.View.extend({
 	  template: template,
 	  collection: null,
+	  router: null,
 	  initialize: function(){
 	  
 	  this.collection.fetch();
@@ -49,7 +50,9 @@ define(function(require) {
 			  	        var newAuthor = deck.get("author");
 			  	        var newDeck = new Deck({id:newId, title:newTitle, author:newAuthor,slides: [{title:"Durrab Web Deck"}, {title: "Durrab Mobile!"}, {title: "Durrab End!"}]});
 			  	        this.collection.add(newDeck);
-			  		alert(deck.get('id'));
+			  	        Backbone.history.navigate('decks/'+deck.get("id"), true); 
+			  	        //router.navigate('decks/'+deck.get(id), true);
+			  		//alert(deck.get('id'));
 			  	 },this),
 			  	 error: function(){
 				        alert("Error Occured: " + reply.statusText);
