@@ -55,7 +55,7 @@ define(function(require) {
 	    },
 	    defaultAction: function(actions){
 	    
-	    	alert("These are the default actions:  ");
+	    	//alert("These are the default actions:  ");
 	    
 	    }
 	});
